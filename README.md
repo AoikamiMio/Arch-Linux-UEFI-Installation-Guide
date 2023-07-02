@@ -69,7 +69,7 @@ However, you can also use wireless network by the following.
 ```
 [iwd]# station wlan0 connect Wifi-SSID
 ```
->> You can also use this command to combine it into one step
+>> You can also use this combined command to connect.
 >> __# iwctl --passphrase `passphrase` station device connect `Wifi-SSID`__
 7. Use `quit` to quit `iwc`, and verify your connection.
 ```
