@@ -2,7 +2,7 @@
 ## Preparation 
 
 ### Prepare an installation medium
-1. Download the recently release of  [Ventoy](https://github.com/ventoy/Ventoy/releases/)  to creat a bootable USB flash drive, with no less than 4G storage, make sure there is no important data in it or you already have a backup.
+1. Download the recently release of  [Ventoy](https://github.com/ventoy/Ventoy/releases/)  (or any other bootable meida creation tool, we use ventoy as an example here) to creat a bootable USB flash drive, with no less than 4G storage, make sure there is no important data in it or you already have a backup.
 2. Download installation image of [Arch Linux](https://archlinux.org/download/), the archive name should looks like `archlinux-YYYY.MM.DD-x86_64.iso` 
 3. Copy the installation image into partation named `Ventoy`
 
@@ -63,7 +63,7 @@ However, you can also use wireless networks by following steps:
 [iwd]# station wlan0 scan
 [iwd]# station wlan0 get-networks
 ```
-6. Connect your device to the target network (change `WiFi-SSID` to your network), and insert passphrase.
+6. Connect your device to the target network (replace `WiFi-SSID` with your target network), then enter passphrase.
 ```
 [iwd]# station wlan0 connect Wifi-SSID
 ```
@@ -105,8 +105,9 @@ However, you can also use wireless networks by following steps:
 
 #### Format file system partition
 ```
-# mkfs.ext4 /dev/nvme0n1p5
+# mkfs.ext4 /dev/nvme0n1p2
 ```
+> Replace `nvme0n1p2` with your file system partition.
 
 ### Mount partitions
 > Replace __nvme0n1p2__ with your file system partition，__nvme0n1p1__ with your EFI system partition.
