@@ -1,7 +1,5 @@
 # Arch Linux on UEFI Installation Guide
 ## Preparation 
-1. Installation image [Download](https://archlinux.org/download/).
-2. Tools for creating bootable USB drive, example [Ventoy](https://github.com/ventoy/Ventoy).
 
 ### Prepare an installation medium
 1. Download the recently release of  [Ventoy](https://github.com/ventoy/Ventoy/releases/)  to creat a bootable USB flash drive, with no less than 4G storage, make sure there is no important data in it or you already have a backup.
