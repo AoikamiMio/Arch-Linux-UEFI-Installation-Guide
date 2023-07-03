@@ -4,16 +4,16 @@
 2. Tools for creating bootable USB drive, example [Ventoy](https://github.com/ventoy/Ventoy).
 
 ### Prepare an installation medium
-1. Download the recently release of  [Ventoy](https://github.com/ventoy/Ventoy/releases/)  and follow the guid to creat a boot drive with a USB drive no less than 4G storage, make sure there is no important archive in it or you have made a backup of it.
+1. Download the recently release of  [Ventoy](https://github.com/ventoy/Ventoy/releases/)  to creat a bootable USB flash drive, with no less than 4G storage, make sure there is no important data in it or you already have a backup.
 2. Download installation image of [Arch Linux](https://archlinux.org/download/), the archive name should looks like `archlinux-YYYY.MM.DD-x86_64.iso` 
 3. Copy the installation image into partation named `Ventoy`
 
 ### BIOS configuration
 1. Hold F2/ESC/Del etc.(depends on your device) during startup to access bios.
-2. Make sure UEFI is **Enable**.
+2. Make sure UEFI is Enabled.
 3. Disable Secure Boot.
 4. Disable Fast Startup Mode.
-5. Adjust boot order. Check if there is your UEFI USB drive and move it upto the first place of boot order.
+5. Adjust boot order. Check if there is your UEFI USB flash drive and move it upto the first place of the boot order.
 
 ## Establish environment of Installation
 After completing the BIOS settings, restart the computer, we should have entered the Ventoy bootloader interface, select `archlinux-YYYY.MM.DD-x86_64.iso` and **boot in normal mood** to enter the installation program. 
@@ -37,13 +37,13 @@ And also you can reset it by:
 ```
 
 ### Establish an Internet Connection
-The most reliable way is to use a wired connection, as Arch is setup by default to connect to DHCP. In this way you can  directly test your connection:
+The most reliable way is to use a wired connection, as Arch is setup by default to connect to DHCP. In this way you can just test your connection by:
 ```
 # ping archlinux.org
 ```
->> you can use `Ctrl+C` to terminate a running program.
+> you can use `Ctrl+C` to terminate a running program.
 
-However, you can also use wireless network by the following.
+However, you can also use wireless networks by following steps:
 1. Unblock any possible of disable on hardware or software
 ```
 # rfkill unblock all
@@ -52,7 +52,7 @@ However, you can also use wireless network by the following.
 ```
 # ip link show
 ```
-3. Check the status of wireless network device (in generaly, it is named as `wlan0`, if not, please replace `wlan0` with the name of the network device shown in your device), if it is `DOWN`, it needs to be set to `UP`.
+3. Check the status of wireless network device (in generaly, it is named as `wlan0`, if not, please replace `wlan0` with the name of the network device shown in your device), it needs to be set as `UP`.
 ```
 # ip link set wlan0 up
 ```
@@ -69,9 +69,9 @@ However, you can also use wireless network by the following.
 ```
 [iwd]# station wlan0 connect Wifi-SSID
 ```
->> You can also use this combined command to connect.
+>> You can also use this combined command to connect to network.
 >> __# iwctl --passphrase `passphrase` station device connect `Wifi-SSID`__
-7. Use `quit` to quit `iwc`, and verify your connection.
+7. Use `quit` to terminate `iwc`, and verify your connection.
 ```
 # ping archlinux.org
 ```
@@ -127,19 +127,19 @@ Verify mount
 ## Installation
 
 ### Select the mirrors
-> Replace `Spain` with your location, this command would find the fastest mirror of this location. All of the shown `warning` are ignorable.
+> Replace `Spain` with your location, this command would find the fastest mirror of the location. All of the shown `warning` are ignorable.
 ```
 # reflector --country Spain --sort rate --latest 5 --save /etc/pacman.d/mirrorlist
 ```
 
 ### Enable ParallelDownloads
-> Open the configuration of `pacman`, and uncomment `ParallelDownloads = 5`.
+> Open the configuration file of `pacman`, and uncomment `ParallelDownloads = 5`.
 ```
 # vim /etc/pacman.conf
 ```
 
 ### Install essential packages
-> Use `enter` to skip the options, let them as default. (recommended)
+> Use `enter` to skip and leave the options as default. (recommended)
 ```
 # pacstrap /mnt base base-devel linux linux-firmware dhcpcd vim reflector
 ```
@@ -160,7 +160,7 @@ genfstab -L /mnt >> /mnt/etc/fstab
 ```
 
 ### Change root into the new system
-> After this step, our operations are equivalent to performing in the newly installed system. Installation media(USB) is able to be unmounted.
+> After this step, our operations are equivalent to performing in the newly installed system. Installation media(USB flash drive) is able to be unmounted now.
 ```
 # arch-chroot /mnt
 ```
@@ -238,7 +238,7 @@ Set the root password:
 ```
 > uncomment `# %wheel ALL=(ALL:ALL) ALL`.
 
-### Enable microcode 
+### Install microcode 
 Select one of these commands according to your device.
 ```
 # pacman -S intel-ucode
@@ -288,7 +288,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 # dd if=/dev/zero of=/swapfile bs=1M count=8192 status=progress
 ```
-> Replace `8192` with a required value (unit:Mb). Same as RAM of device in general way.
+> Replace `8192` with a necessary value (unit:Mb). Same as RAM of device in general way.
 1. Change authority
 ```
 # chmod 600 /swapfile
